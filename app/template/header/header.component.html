@@ -1,0 +1,89 @@
+<mat-toolbar *ngIf="mostrarMenu" class="header mat-elevation-z4">
+    <span>
+        <a>
+            <img href="" class="logo" src="assets/img/logo.png" alt="logo">
+        </a>
+    </span>
+
+    <span class="title-group">
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+
+
+            <button mat-raised-button routerLink="start" matTooltip="INÍCIO">
+                <i class="material-icons" style="color: #212529">home</i>
+            </button>
+
+            <button mat-raised-button routerLink="services" matTooltip="AGENDA">
+                <i class="material-icons" style="color: #212529">storefront</i>
+            </button>
+
+            <button mat-raised-button routerLink="clients" matTooltip="CLIENTES">
+                <i class="material-icons" style="color: #212529">contact_mail</i>
+            </button>
+            <button mat-raised-button routerLink="courses" matTooltip="TREINAMENTOS">
+                <i class="material-icons" style="color: #212529">book </i>
+            </button>
+
+            <button mat-raised-button routerLink="courses" routerLink="users" matTooltip="USUÁRIOS">
+                <i class="material-icons" style="color: #212529">people </i>
+            </button>
+
+            <button mat-raised-button routerLink="courses" routerLink="equipiments" matTooltip="EQUIPAMENTOS">
+                <i class="material-icons" style="color: #212529">construction </i>
+            </button>
+
+            <button mat-raised-button routerLink="library" matTooltip="BIBLIOTECA">
+                <i class="material-icons" style="color: #212529">auto_stories</i>
+            </button>
+
+            <button mat-raised-button routerLink="budget" matTooltip="FINANCEIRO">
+                <i class="material-icons" style="color: #212529">payments</i>
+            </button>
+
+            <button mat-raised-button routerLink="courses" routerLink="contracts" matTooltip="CONTRATOS">
+                <i class="material-icons" style="color: #212529">gavel </i>
+            </button>
+
+            <button mat-raised-button matTooltip="ENVIAR E-EMAIL">
+                <i class="material-icons" style="color: #212529">send</i>
+            </button>
+
+            <button mat-raised-button routerLink="courses" routerLink="upload-pdf" matTooltip="SALVAR LISTA">
+                <i class="material-icons" style="color: #212529">upload</i>
+            </button>
+
+            <button mat-raised-button  matTooltip="FOTOS DA VISITA OU ETC...">
+                <i class="material-icons" style="color: #212529">image</i>
+            </button>
+
+            <button mat-raised-button routerLink="courses" routerLink="parameters" matTooltip="PARÂMETROS">
+                <i class="material-icons" style="color: #212529">settings </i>
+            </button>
+
+            <button mat-raised-button routerLink="about" matTooltip="SOBRE">
+                <i class="material-icons" style="color: #212529">contact_support</i>
+            </button>
+
+        </mat-menu>
+
+    </span>
+
+    <span class="title-group">
+
+        <a mat-icon-button href="https://www.prosegdigital.com.br" target="_blank"
+            matTooltip="ACESSAR: www.prosegdigital.com.br">
+            <i class="material-icons" style="color: #ffffff; align-items: center;">language</i>
+        </a>
+
+    </span>
+    <span class="espacamento-toolbar"></span>
+
+    <!--AQUI COLOCAR O BOTÃO DE SAIR DO SISTEMA -->
+    <button mat-raised-button matTooltip="SAIR" color="white" class="sair" (click)="reload()        ">
+        <i class="material-icons" style="color: #ffffff">logout</i></button>
+
+</mat-toolbar>

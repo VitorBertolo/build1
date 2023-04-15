@@ -1,0 +1,82 @@
+<div class="mat-elevation-z8">
+    <mat-card class="card_crud_users">
+        <mat-card-title class="card_title_form_users">Adicionar Novo Treinamento</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="courseForm" (ngSubmit)="submitCoursesData()">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12" class="div_teste">
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Nome do Treinamento</label>
+                            <input type="text" formControlName="nome_curso" class="form-control" required />
+                        </div>
+                                             
+                        <br>
+                            
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Categoria</label><br>
+                            <select class="col-md-12 mb-3" class="form-select"  formControlName="categoria1">
+                                <input type="text" class="form-control" required />
+                                <option value="100% Online">100% Online</option>
+                                <option value="Híbridos (Somente Teoria Online)">Híbridos (Somente Teoria Online)</option>
+                                <option value="Semipresencial (Teoria Online + Prática na Proseg)">Semipresencial (Teoria Online + Prática na Proseg)</option>
+                                <option value="Brigada de Incêndio - Conteúdo Teórico (EAD)">Brigada de Incêndio - Conteúdo Teórico (EAD)</option>
+                                <option value="Cursos Cearpa">Cursos Cearpa</option>
+                                <option value="Cursos Delmoro">Cursos Delmoro</option>
+                                <option value="NR 5 - Comissão Interna de Prevenção de Acidentes">NR 5 - Comissão Interna de Prevenção de Acidentes</option>
+                                <option value="NR 12 - Máquinas Automotrizes ou Autopropelidas - Somente Conteúdo Teórico">NR 12 - Máquinas Automotrizes ou Autopropelidas - Somente Conteúdo Teórico</option>
+                                <option value="NR 20 - Segurança com Inflamáveis e Combustível">NR 20 - Segurança com Inflamáveis e Combustível</option>
+                                <option value="100% Presencial">100% Presencial</option>
+                                <option value="Palestras Gratis">Palestras Gratis</option>
+                            </select>
+                            <br>
+                        </div>
+                            
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Carga Horária Online</label>
+                            <input type="text" formControlName="carga_horaria_online" class="form-control" required />
+                        </div>
+
+                        <br>
+                            
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Carga Horária Presencial</label>
+                            <input type="text" formControlName="carga_horaria_presencial" class="form-control" required />
+                        </div>
+
+                        <br>
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Carga Horária Total</label>
+                            <input type="text" formControlName="carga_horaria_total" class="form-control" required />
+                        </div>
+
+                        <br>
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Preço</label>
+                            <input type="text" formControlName="price" class="form-control" required />
+                        </div>
+
+                        <br>
+
+                        <button mat-raised-button color="primary" type="submit" class="button_submit_form">
+                            <i class="material-icons" style="color: #fffefe">person_add</i>
+
+                            Adicionar Treinamento
+                        </button>
+
+                        <button mat-raised-button color="warn" type="button" (click)="resetForm()"
+                            class="button_reset_form">
+                            <i class="material-icons" style="color: #fffefe">restart_alt</i>
+                            Resetar Formulário</button>
+
+                        <button mat-raised-button type="button" class="button_return_form" routerLink="/courses">
+                            <i class="material-icons" style="color: #000000">chevron_left</i>
+                            Voltar</button>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

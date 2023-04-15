@@ -1,0 +1,60 @@
+<div class="mat-elevation-z8">
+    <mat-card class="card_crud_users">
+        <mat-card-title class="card_title_form_users">Adicionar Novos Usuários</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="userForm" (ngSubmit)="submitUsersData()">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12" class="div_teste">
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Nome</label>
+                            <input type="text" formControlName="nome" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>E-mail</label>
+                            <input type="text" formControlName="email" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Telefone</label>
+                            <input type="number" formControlName="telefone" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Função</label>
+                            <input type="text" formControlName="funcao" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="teste">
+                            <label>Senha | Obs: Não é a senha de acesso a plataforma!</label>
+                            <input type="number" formControlName="senha" class="form-control" required />
+                        </div>
+
+                        <br>
+
+                        <br>
+                        <button mat-raised-button color="primary" type="submit" class="button_submit_form">
+                            <i class="material-icons" style="color: #fffefe">person_add</i>
+
+                            Adicionar Usuário
+                        </button>
+
+
+                        <button mat-raised-button color="warn" type="button" (click)="resetForm()"
+                            class="button_reset_form">
+                            <i class="material-icons" style="color: #fffefe">restart_alt</i>
+                            Resetar Formulário</button>
+
+                        <button mat-raised-button type="button" class="button_return_form" routerLink="/users">
+                            <i class="material-icons" style="color: #000000">chevron_left</i>
+                            Voltar</button>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<br>
+<br>

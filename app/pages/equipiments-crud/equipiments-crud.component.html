@@ -1,0 +1,90 @@
+<mat-card>
+    <mat-card-title class="title_card_equipiments">Gestão de Equipamentos</mat-card-title>
+</mat-card>
+
+<br>
+
+<button mat-mini-fab class="button_equipiment_crud" color="primary" matTooltip="Adicionar Equipamento"
+    routerLink="/register-equipiment">
+    <i class="material-icons" style="color: #ffffff">add</i>
+</button>
+
+<button mat-mini-fab class="button_equipiment_crud" color="primary" matTooltip="Relatório de Equipamentos">
+    <i class="material-icons" style="color: #ffffff">print</i>
+</button>
+
+<br>
+<br>
+
+<mat-tab-group class="mat-tab-group-equipiments">
+    <mat-tab label="Listagem de Equipamentos">
+        <mat-card>
+            <mat-card-content>
+                <!-- INSERIR CRUD EQUIPAMENTOS AQUI-->
+                <app-users-list></app-users-list>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Controle de Entrada e Saída de Equipamentos">
+        <br>
+        <br>
+        <p>Cada evento (Entrada ou Saída) tem que ter uma pessoa <strong>responsável;</strong></p>
+        <p>Toda entrada deve conter <strong>obrigatariamente</strong> uma saída como referência;</p>
+        <p>O correto preenchimento desta dela acarretará em uma manutenção e gestão dos equipamentos de forma mais limpa
+            e clara;</p>
+            <mat-divider></mat-divider>
+        <mat-tab-group>
+
+            <mat-tab label="Saída">
+                <mat-card>
+                    <mat-card-title class="title_card_equipiments">Saída</mat-card-title>
+                    <mat-card-content>
+                        <button mat-mini-fab class="button_equipiment_crud" color="primary"
+                            matTooltip="Adicionar Saída">
+                            <i class="material-icons" style="color: #ffffff">add</i>
+                        </button>
+                    </mat-card-content>
+                    <br>
+                    <app-users-list></app-users-list>
+
+                </mat-card>
+            </mat-tab>
+
+            <mat-tab label="Entrada">
+                <mat-card>
+                    <mat-card-title class="title_card_equipiments">Entrada</mat-card-title>
+                    <mat-card-content>
+                        <button mat-mini-fab class="button_equipiment_crud" color="primary"
+                            matTooltip="Adicionar Entrada">
+                            <i class="material-icons" style="color: #ffffff">add</i>
+                        </button>
+                    </mat-card-content>
+                    <br>
+                    <app-users-list></app-users-list>
+
+                </mat-card>
+            </mat-tab>
+
+        </mat-tab-group>
+
+
+        <mat-tab label="Controle de Calibração">
+            <mat-card>
+                <mat-card-content>
+                    <!-- INSERIR LIST-EQUIPIMENTS-CALIBRATION AQUI-->
+
+                    <button mat-mini-fab class="button_equipiment_crud" color="primary"
+                        matTooltip="Adicionar Calibração">
+                        <i class="material-icons" style="color: #ffffff">add</i>
+                    </button>
+
+                    <br>
+
+                    <app-users-list></app-users-list>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+
+    </mat-tab>
+</mat-tab-group>

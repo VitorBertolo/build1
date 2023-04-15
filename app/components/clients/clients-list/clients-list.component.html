@@ -1,0 +1,52 @@
+<br>
+
+<button mat-mini-fab class="mat_button3" (click)="printPdf()" matTooltip="IMPRIMIR RELATÓRIOS DE CLIENTES">
+    <i class="material-icons" style="color: #ffffff">print</i>
+  </button>
+
+<div class="pricing-header mx-auto">
+    <div class="table-responsive" *ngIf="hideWhenNoClients">
+        <table
+            class="table table-hover table-bordered table-responsive-sm table-responsive-md table-responsive-lg caption-top">
+            <thead class="table-dark">
+                <tr class="tr_table">
+                    <th class="nome_tr">KEY/ID</th>
+                    <th class="nome_tr text-center">NOME</th>
+                    <th class="nome_tr text-center">CPF/CNPJ</th>
+                    <th class="nome_tr text-center">RESPONSÁVEL NA PROSEG</th>
+                    <th class="nome_tr text-center">TELEFONE</th>
+                    <th class="nome_tr text-center">E-MAIL</th>
+                    <th class="nome_tr text-center">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of Client | paginate : { itemsPerPage: 5  , currentPage: p }; let i = index">
+                    <th scope="row">{{ client.$key }}</th>
+                    <td>{{ client.nome }}</td>
+                    <td>{{ client.cnpj | cnpj }}</td>
+                    <td>{{ client.responsavel_proseg }}</td>
+                    <td>{{ client.telefone1 | telefone}}</td>
+                    <td>{{ client.email }}</td>
+                    <td class="text-center action-block table-warning">
+
+                        <button mat-mini-fab color="primary" routerLink="/edit-clients/{{ client.$key }}"
+                            class="mat_button2" matTooltip="EDITAR">
+                            <i class="material-icons" style="color: #ffffff">edit</i> </button>
+
+                        <button mat-mini-fab class="mat_button3" matTooltip="IMPRIMIR">
+                            <i class="material-icons" style="color: #ffffff">print</i> </button>
+
+                        <button mat-mini-fab color="warn" (click)="deleteClient(client)" class="mat_button2"
+                            matTooltip="DELETAR">
+                            <i class="material-icons" style="color: #ffffff">delete</i> </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center;">
+        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+            nextLabel="Próxima"></pagination-controls>
+    </div>
+</div>

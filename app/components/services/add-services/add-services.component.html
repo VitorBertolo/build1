@@ -1,0 +1,148 @@
+<div class="mat-elevation-z8">
+    <mat-card class="card_crud_services">
+        <mat-card-title class="card_title_form_services">Adicionar Novo Serviço</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="serviceForm" (ngSubmit)="submitServicesData()">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12" class="div_teste">
+
+                        <ng-template mat-tab-label>
+                            <i class="material-icons" style="color: #000000;">save</i>
+                            Dados Básicos do Serviço
+                        </ng-template>
+
+                        <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                            <label>Empresa</label>
+                            <select class="form-select" formControlName="empresa" aria-label="Default select example">
+                                <option value="{{Clients.nome}}" *ngFor="let Clients of Clients"> {{Clients.nome}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                            <label>Responsável Pelo Serviço</label>
+                            <select class="form-select" formControlName="responsavel"
+                                aria-label="Default select example">
+                                <option value="{{Users.nome}}" *ngFor="let Users of User" multiple>{{Users.nome}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                            <label for="start">Prazo para Realização:</label>
+                            <br>
+                            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01"
+                                max="2035-12-31" class="date_picker_native" formControlName="prazo_entrega">
+                        </div>
+
+                        <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                            <label>Preço (Somente quando necessário)</label>
+                            <input type="text" formControlName="price_servico" class="form-control" />
+                        </div>
+
+                        <br>
+
+                        <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                            <label>Prioridade Inicial</label>
+                            <p>Digite (1) para 'PRIORIDADE 🔴'</p>
+                            <p>Digite (2) para 'ANDAMENTO 🟡'</p>
+                            <p>Digite (3) para 'CONCLUÍDO 🟢'</p>
+                            <input type="number" formControlName="status_servico" class="form-control" />
+                        </div>
+
+                        <br>
+
+                        <div class="example-action-buttons">
+                        </div>
+                        <mat-accordion class="example-headers-align" multi>
+
+                            <mat-expansion-panel>
+
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Instruções Específicas (Tipos de Documentos)
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <mat-card>
+                                    <mat-card-content>
+                                        <button mat-mini-fab class="mat_button3" matTooltip="ADICIONAR DOCUMENTOS"
+                                            type="button" (click)="addCampo()">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                        <br>
+                                        <br>
+                                        <div formArrayName="tipo_servico1">
+                                            <div *ngFor="let tipoServico of tipo_servico1.controls; let i = index">
+                                                <div [formGroupName]="i">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Selecione uma opção</mat-label>
+                                                        <mat-select formControlName="campo">
+                                                            <mat-option *ngFor="let Users of User"
+                                                                value="{{Users.nome}}">{{Users.nome}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <button mat-raised-button color="warn" type="button"
+                                                        (click)="deleteCampo(i)" class="button_delete_campo">Excluir
+                                                        campo</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                    </mat-card-content>
+                                </mat-card>
+
+
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Lista de Presença
+                                    </mat-panel-title>
+
+                                </mat-expansion-panel-header>
+                                <mat-card-title>Dados Básicos da Lista</mat-card-title>
+                                <mat-card>
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Nome do Treinamento (Lista)</label>
+                                        <select class="form-select" formControlName="treinamento"
+                                            aria-label="Default select example">
+                                            <option value="{{Courses.nome_curso}}" *ngFor="let Courses of Courses">
+                                                {{Courses.nome_curso}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Responsável Pelo Treinamento (Lista)</label>
+                                        <select class="form-select" formControlName="responsavel_treinamento"
+                                            aria-label="Default select example">
+                                            <option value="{{Users.nome}}" *ngFor="let Users of User">{{Users.nome}}
+                                        </select>
+                                    </div>
+
+                                </mat-card>
+                            </mat-expansion-panel>
+
+                        </mat-accordion>
+
+                        <br>
+
+                        <button mat-raised-button color="primary" type="submit" class="button_submit_form">
+                            <i class="material-icons" style="color: #fffefe">save</i>
+                            Salvar Serviço
+                        </button>
+
+                        <button mat-raised-button color="warn" type="button" (click)="resetForm()"
+                            class="button_reset_form">
+                            <i class="material-icons" style="color: #fffefe">restart_alt</i>
+                            Resetar Formulário</button>
+
+                        <button mat-raised-button type="button" class="button_return_form" routerLink="/services">
+                            <i class="material-icons" style="color: #000000">chevron_left</i>
+                            Voltar</button>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

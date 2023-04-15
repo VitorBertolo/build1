@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #212529 ;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.header .logo {
+    max-height: 50px;
+    margin: 10px 10px 10px 10px;;
+    
+}
+
+.header .title-group {
+    padding-left: 2px;
+}
+
+.header .title-group i {
+    padding-right: 5px;
+}
+
+button {
+    background-color: white;
+    margin: 3px 3px 3px 3px;
+}
+
+.sair{
+    margin: 10px 10px 10px 10px;
+}
+
+.espacamento-toolbar {
+    flex: 1 1 auto;
+}
+
+.matMenuItem{
+    display: flex;
+    align-items: center;
+    margin: 0px;  
+}
+
+i {
+    margin: 2px 2px;
+}
+
+.mat-menu-item{
+    margin: 0px;   
+}

@@ -1,0 +1,141 @@
+<div class="mat-elevation-z8">
+    <mat-card class="card_crud_users">
+        <mat-card-title class="card_title_form_users">Atualização Geral de Clientes</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="editForm" (ngSubmit)="updateForm()">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12" class="div_teste">
+
+
+                        <mat-card>
+                            <mat-card-title>Atualização de Dados Básicos</mat-card-title>
+                            <div class="tab_dados_básicos">
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Nome</label>
+                                    <input type="text" formControlName="nome" class="form-control" required />
+                                </div>
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>CNPJ</label>
+                                    <input type="text" formControlName="cnpj" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Responsável Pela Empresa</label>
+                                    <input type="text" formControlName="responsavel_empresa" class="form-control"
+                                        required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Telefone Fixo</label>
+                                    <input type="text" formControlName="telefone_fixo" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Telefone Celular | Principal</label>
+                                    <input type="text" formControlName="telefone1" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Telefone Celular | Secundário</label>
+                                    <input type="text" formControlName="telefone2" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>E-mail</label>
+                                    <input type="text" formControlName="email" class="form-control" required />
+                                </div>
+                            </div>
+                        </mat-card>
+                        <br>
+                        <mat-card>
+                            <mat-card-title>Atualização de Dados Específicos</mat-card-title>
+                            <div class="tab_dados_especificos">
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>É cliente Mensal?</label>
+                                    <input type="text" formControlName="mensal" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Periodicidade das Visitas:</label>
+                                    <input type="text" formControlName="periodicidade_visitas" class="form-control"
+                                        required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Tipo de atendimento:</label>
+                                    <input type="text" formControlName="item_contrato" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Validade de Procuração do E-social</label>
+                                    <input type="text" formControlName="validade_proc_esocial" class="form-control"
+                                        required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Vigência do PGR</label>
+                                    <input type="text" formControlName="vigencia_pgr" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Validade da ART</label>
+                                    <input type="text" formControlName="validade_art" class="form-control" required />
+                                </div>
+                            </div>
+                        </mat-card>
+                        <br>
+                        <mat-card>
+                            <mat-card-title>Atualização de Endereço</mat-card-title>
+
+                            <div class="tab_dados_endereco">
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>CEP</label>
+                                    <input type="text" formControlName="cep" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Bairro</label>
+                                    <input type="text" formControlName="bairro" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Logradouro</label>
+                                    <input type="text" formControlName="logradouro" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Número</label>
+                                    <input type="text" formControlName="numero" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Cidade</label>
+                                    <input type="text" formControlName="cidade" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12 mb-3" class="teste">
+                                    <label>Estado</label>
+                                    <input type="text" formControlName="uf" class="form-control" required />
+                                </div>
+                            </div>
+                        </mat-card>
+
+                        <br>
+                        <div class="form-group text-right">
+                            <button mat-raised-button color="primary" type="button" (click)="updateForm()"
+                                class="button_reset_form">
+                                <i class="material-icons" style="color: #fffefe">edit_note</i>
+                                Atualizar Usuário</button>
+
+                            <button mat-raised-button type="button" class="button_return_form" routerLink="/users">
+                                <i class="material-icons" style="color: #000000">chevron_left</i>
+                                Voltar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<br>

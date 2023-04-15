@@ -1,0 +1,46 @@
+<mat-card class="mat-elevation-z4">
+  <p class="about">Build: <strong>0.0.0.1 - (Alfa)</strong></p>
+</mat-card>
+<br />
+<mat-card class="mat-elevation-z4">
+  <p class="about">
+    Ideias para novas funções podem ser cadastradas no diretório abaixo abaixo
+  </p>
+  <mat-card-content>
+    <h2>Formulário Aqui</h2>
+  </mat-card-content>
+</mat-card>
+
+<br>
+
+<form>
+  <input  type="file" (change)="onFileSelected($event)">
+  <br>
+  <br>
+  <label for="description">Descrição:</label>
+  
+  <input style="width: 100%;" type="text" id="description" name="imageName" [(ngModel)]="imageDescription">
+  
+  <br>
+  <br>
+  <button mat-raised-button color="primary" type="button" (click)="uploadImage()">Upload</button>
+  <br>
+  <br>
+  <div>
+  </div>
+  <br>
+  <mat-progress-bar [value]="uploadProgress | async"></mat-progress-bar>
+</form>
+
+<br>
+
+<div *ngIf="uploadSuccess">Upload bem-sucedido!</div>
+
+<br>
+
+<div *ngFor="let url of imageUrls">
+  <img [src]="url" width="200" height="200">
+</div>
+
+
+

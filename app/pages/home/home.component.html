@@ -1,0 +1,38 @@
+<header class="header_init">
+</header>
+
+<br>
+<br>
+
+<mat-card-content class="container">
+  <mat-card class="cardLogin">
+    <a>
+      <img src="assets/img/logo.png" alt="logo" class="logo_login" />
+    </a>
+
+    <mat-card-content class="conteudo-login">
+      <mat-card-title class="card_title">
+        <strong>L O G I N - SIGPLUS SOFTWARE</strong>
+        <mat-card-subtitle>Cliente: Proseg Assessoria e Treinamentos</mat-card-subtitle>
+      </mat-card-title>
+
+      <mat-form-field class="inputLogin" appearence="fill">
+        <input [(ngModel)]="usuario.nome" matInput placeholder="Entre com seu e-mail" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.senha" />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button type="button" class="btn btn-dark" (click)="fazerLogin()">ENTRAR</button>
+
+    </mat-card-content>
+  </mat-card>
+</mat-card-content>
+
+<app-footer></app-footer>

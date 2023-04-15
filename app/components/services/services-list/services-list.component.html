@@ -1,0 +1,69 @@
+<br>
+
+<div class="pesquisa_table_service">
+    <div class="col-md-6">
+        <Label>Pesquisa na tabela:</Label>
+        <br>
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Pesquisar">
+    </div>
+</div>
+
+<mat-card>
+    <mat-card-content>
+
+        <div class="table-responsive" *ngIf="hideWhenNoUsers" id="print-section">
+            <table
+                class="table table-bordered table-hover table-responsive-sm table-responsive-md table-responsive-lg caption-top">
+                <thead class="table-dark">
+                    <tr class="tr_table">
+                        <th style="vertical-align: middle; padding: 0;" class="nome_tr text-center">ORDEM</th>
+                        <th class="nome_tr">KEY/ID</th>
+                        <th class="nome_tr text-center">RESPONSÁVEL</th>
+                        <th class="nome_tr text-center">EMPRESA</th>
+                        <th class="nome_tr text-center">PRAZO</th>
+                        <th class="nome_tr text-center">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let services of Services | filter: searchTerm : ['$key','responsavel', 'empresa', 'prazo_entrega'] | paginate : { itemsPerPage: 100000, currentPage: p }; let i = index"
+                        [class.table-danger]="services.status_servico === 1"
+                        [class.table-warning]="services.status_servico === 2"
+                        [class.table-success]="services.status_servico === 3" >
+                        <td style="vertical-align: middle;" class="text-center table-active" >{{ i + 1 }}</td>
+                        <th style="vertical-align: middle;" scope="row">{{ services.$key }}</th>
+                        <td style="vertical-align: middle;" class="text-center">{{ services.responsavel }}</td>
+                        <td style="vertical-align: middle;" class="text-center">{{ services.empresa }}</td>
+                        <td style="vertical-align: middle;" class="text-center">{{ services.prazo_entrega }}</td>
+                        <td class="text-center action-block table-secondary">
+                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-mini-fab color="primary" routerLink="/edit-services/{{ services.$key }}"
+                                    class="mat_button1" matTooltip="VER SERVIÇO">
+                                    <i class="material-icons">visibility</i>
+                                </button>
+                                <button mat-mini-fab class="mat_button2" matTooltip="IMPRIMIR LISTA DE PRESENÇA">
+                                    <i class="material-icons">picture_as_pdf</i>
+                                </button>
+                                <button mat-mini-fab class="mat_button3" matTooltip="IMPRIMIR CERTIFICADO(S)">
+                                    <i class="material-icons">card_membership</i>
+                                </button>
+                                <button mat-mini-fab color="warn" (click)="deleteService(services)" class="mat_button4"
+                                    matTooltip="DELETAR">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align: center;">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+                nextLabel="Próxima"></pagination-controls>
+        </div>
+
+    </mat-card-content>
+</mat-card>

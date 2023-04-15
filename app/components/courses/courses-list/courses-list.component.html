@@ -1,0 +1,61 @@
+<button mat-mini-fab class="mat_button3" (click)="generatePDF()" matTooltip="IMPRIMIR RELATÓRIOS DE CLIENTES">
+    <i class="material-icons" style="color: #ffffff">print</i>
+  </button>
+<div class="pricing-header mx-auto">
+    <div class="table-responsive" *ngIf="hideWhenNoUsers">
+
+        <!--CATEGORIA 100% ONLINE-->
+        <br>
+        <table
+            class="table table-hover table-bordered table-responsive-sm table-responsive-md table-responsive-lg caption-top">
+            <thead class="table-dark">
+                <tr class="tr_table">
+                    <th class="nome_tr text-center">KEY/ID</th>
+                    <th class="nome_tr text-center">NOME DO TREINAMENTO</th>
+                    <th class="nome_tr text-center">CATEGORIA</th>
+                    <th class="nome_tr text-center">CARGA HORÁRIA ONLINE</th>
+                    <th class="nome_tr text-center">CARGA HORÁRIA PRESENCIAL</th>
+                    <th class="nome_tr text-center">CARGA HORÁRIA TOTAL</th>
+                    <th class="nome_tr text-center">(R$) PREÇO </th>
+                    <th class="nome_tr text-center">AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of Course | paginate : { itemsPerPage: 10  , currentPage: p }; let i = index">
+                    <th scope="row">{{ course.$key }}</th>
+                    <td>{{ course.nome_curso }}</td>
+                    <td>{{ course.categoria1 }}</td>
+                    <td>{{ course.carga_horaria_online }} Hora(s)</td>
+                    <td>{{ course.carga_horaria_presencial }} Hora(s)</td>
+                    <td>{{ course.carga_horaria_total }} Hora(s)</td>
+                    <td>R$ {{ course.price }}</td>
+
+
+
+
+                    <td class="text-center action-block table-warning">
+
+
+                        <button mat-mini-fab color="primary" class="mat_button2" matTooltip="INFORMAÇÕES">
+                            <i class="material-icons" style="color: #ffffff">priority_high</i> </button>
+
+                        <button mat-mini-fab class="mat_button3" matTooltip="GERAR LISTA"
+                            routerLink="/print-list-courses/{{ course.$key }}">
+                            <i class="material-icons" style="color: #ffffff">picture_as_pdf</i> </button>
+
+                        <button mat-mini-fab color="warn" (click)="deleteCourse(course)" class="mat_button2"
+                            matTooltip="DELETAR" disabled>
+                            <i class="material-icons" style="color: #ffffff">delete</i> </button>
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div style="text-align: center;">
+        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+            nextLabel="Próxima"></pagination-controls>
+    </div>
+</div>

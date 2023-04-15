@@ -1,0 +1,39 @@
+.table_print_courses {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.button_users_crud{
+    background-color: #212529;
+}
+
+.nome_campo {
+    display: flex;
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.name_instrutor {
+    margin: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15em
+}
+
+.ass_instrutor {
+    align-items: center;
+    margin: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
