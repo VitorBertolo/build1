@@ -15,9 +15,9 @@ export interface Clients {
   vigencia_pgr: string;
   validade_art: string;
   cep: number;
-  bairro: string;
   logradouro: string;
-  numero: number;
-  cidade: string;
+  bairro: string;
+  localidade: string
   uf: string;
+  ddd: number
 }

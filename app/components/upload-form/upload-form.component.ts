@@ -15,6 +15,12 @@ import { AngularFireDatabase } from "@angular/fire/compat/database";
 import * as pdfjs from "pdfjs-dist/build/pdf.min.js";
 import { finalize } from "rxjs/operators";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { User } from "../users/shared/user";
+import { UsersService } from "../users/shared/user.service";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalServicesComponent } from "./modal-services/modal-services.component";
+import { Usuario } from "src/app/pages/home/usuario";
+import { AuthService } from "src/app/pages/home/auth.service";
 
 @Component({
   selector: "app-upload-form",
@@ -32,16 +38,39 @@ export class UploadFormComponent {
   downloadURL: Observable<string>;
   uploadForm: any;
   uploadProgress = 0;
-
+  User!: User[];
+  nomeUsuario: string;
+  termo = '';
   constructor(
     private storage: AngularFireStorage,
     private db: AngularFireDatabase,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public userApi: UsersService,
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {
     this.pdfs$ = this.db.list("pdfs").valueChanges();
     this.uploadForm = this.fb.group({
       file: [null, Validators.required],
       description: ["", Validators.required],
+      nome: [""],
+      serviceOrigem:["", Validators.required]
+    });
+  }
+
+  
+  ngOnInit(){
+
+    this.nomeUsuario = this.authService.getNomeUsuarioAtual();
+    
+    let s = this.userApi.GetUsersList();
+    s.snapshotChanges().subscribe((data) => {
+      this.User = [];
+      data.forEach((item) => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.User.push(a as User);
+      });
     });
   }
 
@@ -69,7 +98,8 @@ export class UploadFormComponent {
       return snapshot.ref.updateMetadata({
         customMetadata: {
           originalName: this.selectedFile.name,
-          description: this.description, // Salva a descrição no metadata do arquivo
+          description: this.description,
+          nome: this.nomeUsuario,
         },
       });
     });
@@ -86,6 +116,9 @@ export class UploadFormComponent {
           description: this.description,
           uploadTime: uploadTime,
           size: this.selectedFile.size,
+          nomeUsuario: this.nomeUsuario,
+          serviceOrigem: this.serviceOrigem,
+          
         }); // Salva a descrição junto com o URL e o nome do arquivo,
         this.uploadForm.get("description").setValue("");
         alert("PDF ANEXADO COM SUCESSO!!!");
@@ -97,7 +130,26 @@ export class UploadFormComponent {
     return this.uploadForm.get("description").value;
   }
 
+  get nome() {
+    return this.uploadForm.get("nome").value;
+  }
+
+  get serviceOrigem() {
+    return this.uploadForm.get("serviceOrigem").value;
+  }
+
   openPdf(url: string) {
     window.open(url, "_blank", "height=600,width=800");
   }
+
+  openModal() {
+    this.dialog.open(ModalServicesComponent, { width: "1200px"});
+  }
+  
+  onInputKeyUp(event: any) {
+    const inputValue = event.target.value.trim(); // Remove os espaços extras
+    event.target.value = inputValue; // Atualiza o valor do input sem os espaços extras
+  }
+ 
+  
 }

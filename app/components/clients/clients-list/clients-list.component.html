@@ -1,8 +1,48 @@
-<br>
+<br />
 
-<button mat-mini-fab class="mat_button3" (click)="printPdf()" matTooltip="IMPRIMIR RELATÓRIOS DE CLIENTES">
-    <i class="material-icons" style="color: #ffffff">print</i>
-  </button>
+<mat-card class="relatorios">
+    <mat-card-title class="relatorios">Imprimir Relatórios</mat-card-title>
+    <mat-card-content>
+        <button mat-raised-button [matMenuTriggerFor]="animals">
+            Selecione o tipo:
+        </button>
+        <mat-menu #animals="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="vertebrates">Gerais</button>
+            <button mat-menu-item [matMenuTriggerFor]="invertebrates">
+                Específicos
+            </button>
+        </mat-menu>
+
+        <mat-menu #vertebrates="matMenu">
+            <button mat-menu-item (click)="printPdf()">
+                <i class="material-icons" style="color: #000000">print</i>
+                CLIENTES
+            </button>
+        </mat-menu>
+
+        <mat-menu #invertebrates="matMenu">
+            <button mat-menu-item (click)="printPdf2()">
+                <i class="material-icons" style="color: #000000">print</i>
+                PERIODICIDADE
+            </button>
+
+            <button mat-menu-item (click)="printPdf3()">
+                <i class="material-icons" style="color: #000000">print</i>
+                ENDEREÇOS
+            </button>
+
+            <button mat-menu-item (click)="printPdf2()">
+                <i class="material-icons" style="color: #000000">print</i>
+                GESTÃO - ASSESSORIA
+            </button>
+
+            <button mat-menu-item (click)="printPdf2()">
+                <i class="material-icons" style="color: #000000">print</i>
+                VISITAS PRESENCIAIS
+            </button>
+        </mat-menu>
+    </mat-card-content>
+</mat-card>
 
 <div class="pricing-header mx-auto">
     <div class="table-responsive" *ngIf="hideWhenNoClients">
@@ -20,32 +60,42 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let client of Client | paginate : { itemsPerPage: 5  , currentPage: p }; let i = index">
+                <tr *ngFor="
+            let client of Client
+              | paginate : { itemsPerPage: 5, currentPage: p };
+            let i = index
+          ">
                     <th scope="row">{{ client.$key }}</th>
                     <td>{{ client.nome }}</td>
                     <td>{{ client.cnpj | cnpj }}</td>
                     <td>{{ client.responsavel_proseg }}</td>
-                    <td>{{ client.telefone1 | telefone}}</td>
+                    <td>{{ client.telefone1 | telefone }}</td>
                     <td>{{ client.email }}</td>
                     <td class="text-center action-block table-warning">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-mini-fab color="primary" routerLink="/edit-clients/{{ client.$key }}"
+                                class="mat_button2" matTooltip="EDITAR">
+                                <i class="material-icons" style="color: #ffffff">edit</i>
+                            </button>
 
-                        <button mat-mini-fab color="primary" routerLink="/edit-clients/{{ client.$key }}"
-                            class="mat_button2" matTooltip="EDITAR">
-                            <i class="material-icons" style="color: #ffffff">edit</i> </button>
+                            <button mat-mini-fab class="mat_button3" matTooltip="IMPRIMIR">
+                                <i class="material-icons" style="color: #ffffff">print</i>
+                            </button>
 
-                        <button mat-mini-fab class="mat_button3" matTooltip="IMPRIMIR">
-                            <i class="material-icons" style="color: #ffffff">print</i> </button>
-
-                        <button mat-mini-fab color="warn" (click)="deleteClient(client)" class="mat_button2"
-                            matTooltip="DELETAR">
-                            <i class="material-icons" style="color: #ffffff">delete</i> </button>
-
+                            <button mat-mini-fab color="warn" (click)="deleteClient(client)" class="mat_button2"
+                                matTooltip="DELETAR">
+                                <i class="material-icons" style="color: #ffffff">delete</i>
+                            </button>
+                        </mat-menu>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div style="text-align: center;">
+    <div style="text-align: center">
         <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
             nextLabel="Próxima"></pagination-controls>
     </div>

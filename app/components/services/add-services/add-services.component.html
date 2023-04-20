@@ -103,6 +103,7 @@
                                 </mat-expansion-panel-header>
                                 <mat-card-title>Dados Básicos da Lista</mat-card-title>
                                 <mat-card>
+
                                     <div class="col-md-12 mb-3" class="tab_dados_básicos">
                                         <label>Nome do Treinamento (Lista)</label>
                                         <select class="form-select" formControlName="treinamento"
@@ -113,12 +114,417 @@
                                     </div>
 
                                     <div class="col-md-12 mb-3" class="tab_dados_básicos">
-                                        <label>Responsável Pelo Treinamento (Lista)</label>
+                                        <label>Empresa</label>
+                                        <select class="form-select" formControlName="empresa_lista"
+                                            aria-label="Default select example">
+                                            <option value="{{Clients.nome}}" *ngFor="let Clients of Clients">
+                                                {{Clients.nome}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Responsável Pelo Treinamento (Instrutor Lista)</label>
                                         <select class="form-select" formControlName="responsavel_treinamento"
                                             aria-label="Default select example">
                                             <option value="{{Users.nome}}" *ngFor="let Users of User">{{Users.nome}}
                                         </select>
                                     </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Carga Horaria Total do Treinamento</label>
+                                        <input type="text" formControlName="hora_total" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Hora de Ínicio</label>
+                                        <input type="text" formControlName="hora_inicio" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Hora Final</label>
+                                        <input type="text" formControlName="hora_fim" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Cidade do Treinamento</label>
+                                        <input type="text" formControlName="cidade_treinamento" class="form-control" />
+                                    </div>
+
+                                    <br>
+
+                                    <mat-card-content>
+                                        <mat-expansion-panel>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Dados dos Alunos
+                                                </mat-panel-title>
+
+
+                                            </mat-expansion-panel-header>
+
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 01</label>
+                                                    <input type="text" formControlName="nome_aluno_1"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 01</label>
+                                                    <input type="text" formControlName="cpf_aluno_1"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 02</label>
+                                                    <input type="text" formControlName="nome_aluno_2"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 02</label>
+                                                    <input type="text" formControlName="cpf_aluno_2"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 03</label>
+                                                    <input type="text" formControlName="nome_aluno_3"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 03</label>
+                                                    <input type="text" formControlName="cpf_aluno_3"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 04</label>
+                                                    <input type="text" formControlName="nome_aluno_4"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 04</label>
+                                                    <input type="text" formControlName="cpf_aluno_4"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 05</label>
+                                                    <input type="text" formControlName="nome_aluno_5"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 05</label>
+                                                    <input type="text" formControlName="cpf_aluno_5"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 06</label>
+                                                    <input type="text" formControlName="nome_aluno_6"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 06</label>
+                                                    <input type="text" formControlName="cpf_aluno_6"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 07</label>
+                                                    <input type="text" formControlName="nome_aluno_7"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 07</label>
+                                                    <input type="text" formControlName="cpf_aluno_7"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                                                                        
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 09</label>
+                                                    <input type="text" formControlName="nome_aluno_8"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 09</label>
+                                                    <input type="text" formControlName="cpf_aluno_8"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 09</label>
+                                                    <input type="text" formControlName="nome_aluno_9"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 09</label>
+                                                    <input type="text" formControlName="cpf_aluno_9"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 10</label>
+                                                    <input type="text" formControlName="nome_aluno_10"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 10</label>
+                                                    <input type="text" formControlName="cpf_aluno_10"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 11</label>
+                                                    <input type="text" formControlName="nome_aluno_11"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 11</label>
+                                                    <input type="text" formControlName="cpf_aluno_11"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 12</label>
+                                                    <input type="text" formControlName="nome_aluno_12"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 12</label>
+                                                    <input type="text" formControlName="cpf_aluno_12"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 13</label>
+                                                    <input type="text" formControlName="nome_aluno_13"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 13</label>
+                                                    <input type="text" formControlName="cpf_aluno_13"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 14</label>
+                                                    <input type="text" formControlName="nome_aluno_14"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 14</label>
+                                                    <input type="text" formControlName="cpf_aluno_14"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 15</label>
+                                                    <input type="text" formControlName="nome_aluno_15"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 15</label>
+                                                    <input type="text" formControlName="cpf_aluno_15"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 16</label>
+                                                    <input type="text" formControlName="nome_aluno_16"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 16</label>
+                                                    <input type="text" formControlName="cpf_aluno_16"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 17</label>
+                                                    <input type="text" formControlName="nome_aluno_17"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 17</label>
+                                                    <input type="text" formControlName="cpf_aluno_17"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                                                                        
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 18</label>
+                                                    <input type="text" formControlName="nome_aluno_18"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 18</label>
+                                                    <input type="text" formControlName="cpf_aluno_18"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 19</label>
+                                                    <input type="text" formControlName="nome_aluno_19"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 19</label>
+                                                    <input type="text" formControlName="cpf_aluno_19"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 20</label>
+                                                    <input type="text" formControlName="nome_aluno_20"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="col-md-6 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 20</label>
+                                                    <input type="text" formControlName="cpf_aluno_20"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>
+
+
+                                        </mat-expansion-panel>
+                                    </mat-card-content>
+
+                                </mat-card>
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Lista de Presença (Brigada de Incêndio)
+                                    </mat-panel-title>
+
+                                </mat-expansion-panel-header>
+                                <mat-card-title>Dados Básicos da Lista</mat-card-title>
+                                <mat-card>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Nome do Treinamento (Lista)</label>
+                                        <select class="form-select" formControlName="treinamento"
+                                            aria-label="Default select example">
+                                            <option value="{{Courses.nome_curso}}" *ngFor="let Courses of Courses">
+                                                {{Courses.nome_curso}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Empresa</label>
+                                        <select class="form-select" formControlName="empresa_lista"
+                                            aria-label="Default select example">
+                                            <option value="{{Clients.nome}}" *ngFor="let Clients of Clients">
+                                                {{Clients.nome}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Responsável Pelo Treinamento (Instrutor Lista)</label>
+                                        <select class="form-select" formControlName="responsavel_treinamento"
+                                            aria-label="Default select example">
+                                            <option value="{{Users.nome}}" *ngFor="let Users of User">{{Users.nome}}
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Carga Horaria Total do Treinamento</label>
+                                        <input type="text" formControlName="hora_total" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Hora de Ínicio</label>
+                                        <input type="text" formControlName="hora_inicio" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Hora Final</label>
+                                        <input type="text" formControlName="hora_fim" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                                        <label>Cidade do Treinamento</label>
+                                        <input type="text" formControlName="cidade_treinamento" class="form-control" />
+                                    </div>
+
+                                    <br>
+
+                                    <mat-card-content>
+                                        <mat-expansion-panel>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Dados dos Alunos
+                                                </mat-panel-title>
+
+
+                                            </mat-expansion-panel-header>
+
+
+                                            <mat-card-content class="d-flex flex-row">
+                                                <div class="col-md-4 mb-3 tab_dados_básicos">
+                                                    <label>Nome Aluno 01</label>
+                                                    <input type="text" formControlName="nome_aluno_1"
+                                                        class="form-control" />
+                                                </div>
+
+                                                <div class="col-md-4 mb-3 tab_dados_básicos">
+                                                    <label>RG Aluno 01</label>
+                                                    <input type="text" formControlName="rg_aluno1"
+                                                        class="form-control" />
+                                                </div>
+
+                                                <div class="col-md-4 mb-3 tab_dados_básicos">
+                                                    <label>CPF Aluno 01</label>
+                                                    <input type="text" formControlName="cpf_aluno_1"
+                                                        class="form-control" />
+                                                </div>
+                                            </mat-card-content>                      
+
+                                        </mat-expansion-panel>
+                                    </mat-card-content>
 
                                 </mat-card>
                             </mat-expansion-panel>

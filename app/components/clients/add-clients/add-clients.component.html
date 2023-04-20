@@ -112,35 +112,26 @@
                                 </ng-template>
 
                                 <div class="tab_dados_endereco">
-                                    <div class="col-md-12 mb-3" class="teste">
-                                        <label><strong>CEP</strong></label>
-                                        <input type="text" formControlName="cep" class="form-control">
-                                    </div>
+                                    <label for="cep">CEP</label>
+                                    <input class="form-control" type="text" id="cep" formControlName="cep" (blur)="onBlur()">
+                                  <label for="logradouro">Logradouro</label>
+                                  <input class="form-control" type="text" id="logradouro" formControlName="logradouro">
+                                  
+                                  <label for="localidade">Localidade</label>
+                                  <input class="form-control" type="text" id="localidade" formControlName="localidade">
+                                  
+                                  <label for="bairro">Bairro</label>
+                                  <input class="form-control" type="text" id="bairro" formControlName="bairro">
+                                  
+                                  <label for="uf">UF</label>
+                                  <input class="form-control" type="text" id="uf" formControlName="uf">
+                                  
+                                  <label for="ddd">DDD</label>
+                                  <input class="form-control" type="text" id="ddd" formControlName="ddd">
 
-                                    <div class="col-md-12 mb-3" class="teste">
-                                        <label><strong>Bairro</strong></label>
-                                        <input type="text" formControlName="bairro" class="form-control">
-                                    </div>
-
-                                    <div class="col-md-12 mb-3" class="teste">
-                                        <label><strong>Logradouro</strong></label>
-                                        <input type="text" formControlName="logradouro" class="form-control">
-                                    </div>
-
-                                    <div class="col-md-12 mb-3" class="teste">
-                                        <label><strong>Número</strong></label>
-                                        <input type="text" formControlName="numero" class="form-control">
-                                    </div>
-
-                                    <div class="col-md-12 mb-3" class="teste">
-                                        <label><strong>Cidade</strong></label>
-                                        <input type="text" formControlName="cidade" class="form-control">
-                                    </div>
-
-                                    <div class="col-md-12 mb-3" class="teste">
-                                        <label><strong>Estado</strong></label>
-                                        <input type="text" formControlName="uf" class="form-control">
-                                    </div>
+                                      <br>
+                                      <br>
+ 
                                 </div>
                             </mat-tab>
                         </mat-tab-group>

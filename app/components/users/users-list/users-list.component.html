@@ -22,7 +22,11 @@
                     <td>{{ user.funcao }}</td>
                     <td class="text-center action-block table-warning">
 
-                        <button mat-mini-fab color="primary" routerLink="/edit-users/{{ user.$key }}"
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-mini-fab color="primary" routerLink="/edit-users/{{ user.$key }}"
                             class="mat_button2" matTooltip="EDITAR">
                             <i class="material-icons" style="color: #ffffff">edit</i> </button>
 
@@ -32,7 +36,7 @@
                         <button mat-mini-fab color="warn" (click)="deleteUser(user)" class="mat_button2"
                             matTooltip="DELETAR">
                             <i class="material-icons" style="color: #ffffff">delete</i> </button>
-
+                          </mat-menu>
                     </td>
                 </tr>
             </tbody>
@@ -43,3 +47,5 @@
             nextLabel="Próxima"></pagination-controls>
     </div>
 </div>
+
+<br>

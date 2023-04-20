@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { ModalStartComponent } from "./modal-start/modal-start.component";
 import { AuthService } from "../home/auth.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-start",
@@ -11,7 +12,11 @@ import { AuthService } from "../home/auth.service";
   styleUrls: ["./start.component.scss"],
 })
 export class StartComponent {
+  mostrarElemento: boolean = false;
+
   nomeUsuario: string;
+  cnpj: string;
+
   ngOnInit() {
     this.openModal();
     {
@@ -32,11 +37,15 @@ export class StartComponent {
     private _formBuilder: FormBuilder,
     private router: Router,
     private dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) {}
 
   openModal() {
-    this.dialog.open(ModalStartComponent, { width: "1200px"});
+    this.dialog.open(ModalStartComponent, { width: "1200px" });
   }
 
+  alterarMostrarElemento() {
+    this.mostrarElemento = !this.mostrarElemento;
+  }
 }

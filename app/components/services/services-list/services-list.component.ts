@@ -3,6 +3,11 @@ import { ToastrService } from "ngx-toastr";
 import { ServicesService } from "../shared/services.service";
 import { Services } from "../shared/services";
 import { FormsModule } from "@angular/forms";
+import { AuthService } from "src/app/pages/home/auth.service";
+import { AuthGuard } from "src/app/pages/home/auth.guard";
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: "app-services-list",
@@ -23,7 +28,9 @@ export class ServicesListComponent implements OnInit {
   constructor(
     public serviceApi: ServicesService,
     public toastr: ToastrService,
-    
+    public AuthService: AuthService,
+    public authService: AuthService,
+    private authGuard: AuthGuard
   ) {}
 
   ngOnInit() {
@@ -62,15 +69,14 @@ export class ServicesListComponent implements OnInit {
     }
   }
 
-  
   sort(columnName: string) {
     if (columnName === this.sortColumn) {
       // Se clicar na coluna atual, inverte a direção de ordenação
-      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+      this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
     } else {
       // Se clicar em uma nova coluna, define a nova coluna e a direção como ascendente
       this.sortColumn = columnName;
-      this.sortDirection = 'asc';
+      this.sortDirection = "asc";
     }
   }
 
@@ -82,9 +88,9 @@ export class ServicesListComponent implements OnInit {
         const aValue = a[this.sortColumn];
         const bValue = b[this.sortColumn];
         if (aValue < bValue) {
-          return this.sortDirection === 'asc' ? -1 : 1;
+          return this.sortDirection === "asc" ? -1 : 1;
         } else if (aValue > bValue) {
-          return this.sortDirection === 'asc' ? 1 : -1;
+          return this.sortDirection === "asc" ? 1 : -1;
         } else {
           return 0;
         }
@@ -92,5 +98,41 @@ export class ServicesListComponent implements OnInit {
     }
     return services;
   }
-   
+
+  getNomeUsuarioAtual(): string {
+    return this.AuthService.getNomeUsuarioAtual(); // <-- usando aqui
+  }
+
+  generatePDF() {
+    const documentDefinition = {
+      pageOrientation: 'landscape',
+      content: [
+        {
+          table: {
+            fillPage: true,
+            headerRows: 1,
+            widths: ['auto','*','*','*','*'],
+            body: [
+              [
+                'KEY',
+                'RESPONSAVEL',
+                'EMPRESA',
+                'DATA',
+                'SITUAÇÃO | 1 = Urgente | 2 = Andamento | 3 = Finalizado'
+              ],
+              ...this.Services.map(services => [
+                services.$key,
+                services.responsavel,
+                services.empresa,
+                services.prazo_entrega,
+                services.status_servico
+              ])
+            ]
+          }
+        }
+      ]
+    };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
 }

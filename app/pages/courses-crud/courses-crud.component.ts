@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-courses-crud',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesCrudComponent implements OnInit {
   
+  constructor(public toastr: ToastrService){}
+
   ngOnInit(): void {
-    alert("Todos os Treinamentos Estão de Acordo com as NR's Vigentes");
+    this.toastr.info("Treinamentos de Acordo com as Normas Vigentes.");
   }
 
 }

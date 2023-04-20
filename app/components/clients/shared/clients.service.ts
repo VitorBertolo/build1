@@ -32,11 +32,11 @@ export class ClientsService {
       vigencia_pgr: clients.vigencia_pgr,
       validade_art: clients.validade_art,
       cep: clients.cep,
-      bairro: clients.bairro,
       logradouro: clients.logradouro,
-      numero: clients.numero,
-      cidade: clients.cidade,
+      bairro: clients.bairro,
+      localidade: clients.localidade,
       uf: clients.uf,
+      ddd: clients.ddd
     });
   }
 
@@ -70,11 +70,11 @@ export class ClientsService {
       vigencia_pgr: clients.vigencia_pgr,
       validade_art: clients.validade_art,
       cep: clients.cep,
-      bairro: clients.bairro,
       logradouro: clients.logradouro,
-      numero: clients.numero,
-      cidade: clients.cidade,
+      bairro: clients.bairro,
+      localidade: clients.localidade,
       uf: clients.uf,
+      ddd: clients.ddd
     });
   }
 

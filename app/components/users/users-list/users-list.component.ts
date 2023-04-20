@@ -5,6 +5,10 @@ import { ToastrService } from 'ngx-toastr';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as XLSX from 'xlsx';
+import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-users-list',
@@ -17,8 +21,10 @@ export class UsersListComponent implements OnInit  {
   hideWhenNoUsers: boolean = false;
   noData: boolean = false;
   preLoader: boolean = true;
+  private readonly collectionName = 'users-list';
+  private readonly collection: AngularFirestoreCollection<User>;
 
-  constructor(public userApi: UsersService, public toastr: ToastrService){}
+  constructor(public userApi: UsersService, public toastr: ToastrService, private afDb: AngularFireDatabase){}
 
   ngOnInit(){
     this.dataState();
@@ -69,6 +75,52 @@ export class UsersListComponent implements OnInit  {
     });
   }
 
+  generateReport() {
+    this.afDb.list('/users-list').valueChanges().subscribe(data => {
+      const header = ['nome', 'Idade', 'Endereço', 'E-mail'];
+      const worksheet = this.createWorksheet(data, header);
+      const excelBuffer: any = this.generateExcelBuffer(worksheet);
+      const dataBlob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+      const filename = 'report.xlsx';
+      saveAs(dataBlob, filename);
+    });
+  }
+
+  createWorksheet(data: any[], header: string[]) {
+    const worksheet = [];
+    worksheet.push(header);
+    data.forEach(row => {
+      const rowValues = [];
+      rowValues.push(row.nome);
+      rowValues.push(row.idade);
+      rowValues.push(row.endereco);
+      rowValues.push(row.email);
+      worksheet.push(rowValues);
+    });
+    return worksheet;
+}
+
+
+  generateExcelBuffer(worksheet: any[]) {
+    const workbook = {
+      Sheets: { 'data': worksheet },
+      SheetNames: ['data']
+    };
+    const excelBuffer: any = this.writeExcel(workbook, { bookType: 'xlsx', type: 'array' });
+    return excelBuffer;
+  }
+
+  writeExcel(workbook: any, options: any) {
+    const fileType = options.bookType || 'xlsx';
+    const mimeType = {
+      'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'xls': 'application/vnd.ms-excel',
+      'csv': 'text/csv'
+    }[fileType];
+    const fileExtension = '.' + fileType;
+    const excelBuffer = XLSX.write(workbook, { bookType: fileType, type: 'array' });
+    return excelBuffer;
+  }
 
 }
 

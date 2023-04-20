@@ -143,7 +143,7 @@ const routes: Routes = [
   },
   { path: "edit-services/:id", 
     component: EditServicesComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
   },
   { 
     path: "register-courses", 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/pages/home/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
   mostrarMenu: boolean = false;
   constructor(private AuthService: AuthService, private router: Router) {}
 
@@ -20,4 +22,5 @@ export class HeaderComponent {
   reload(){
     location.reload();      
   }
+
 }

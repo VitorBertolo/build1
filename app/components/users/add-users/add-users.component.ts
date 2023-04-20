@@ -32,7 +32,6 @@ export class AddUsersComponent implements OnInit {
   selectedFruits: any;
   UsersService: any;
 
-
   constructor(
     public usersApi: UsersService,
     public fb: FormBuilder,

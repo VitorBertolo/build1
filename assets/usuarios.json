@@ -1,0 +1,14 @@
+[
+  {
+    "email": "suporte@prosegmt.com.br",
+    "nome": "Vitor Menezes Bertolo",
+    "senha": "proseg2441",
+    "permissoes": ["admin"]
+  },
+  {
+    "email": "teste@gmail.com",
+    "nome": "Desenvolvedor",
+    "senha": "123",
+    "permissoes": ["user"]
+  }
+]

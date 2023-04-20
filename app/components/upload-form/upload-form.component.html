@@ -11,18 +11,28 @@
                     <label for="description">Descrição do Arquivo:</label>
                     <input class="form-control" style="width: 100%;" type="text" id="description" name="description"
                         formControlName="description">
-                    <label>Usuário Responsável Pelo Cadastro</label>
-                    <input class="form-control" style="width: 100%;" type="text">
+                    <label>Usuário Responsável Pelo Upload:</label>
+                    <div class="col-md-12 mb-3" class="tab_dados_básicos">
+                        <select class="form-select" formControlName="nome" aria-label="Default select example">
+                            <option>{{nomeUsuario}}
+                        </select>
+                    </div>
+                    <label>Serviço de Origem da Lista de Presença:</label>
+                    <input class="form-control" style="width: 100%;" type="text" id="serviceOrigem" name="serviceOrigem"
+                        formControlName="serviceOrigem" (keyup)="onInputKeyUp($event)">
                     <br>
                     <br>
-                    <button mat-raised-button color="primary" type="submit"
-                        [disabled]="!uploadForm.valid">Upload</button>
+                    <button mat-raised-button color="warn" type="submit" [disabled]="!uploadForm.valid">Upload</button>
                     <br>
                     <br>
-                    <p><strong>Progresso:</strong></p>
-                    <mat-progress-bar *ngIf="uploadProgress$ | async" mode="determinate"
-                        [value]="(uploadProgress$ | async)"></mat-progress-bar>
                 </form>
+                <button mat-raised-button color="primary" (click)="openModal()">Ver Agenda</button>
+                <br>
+                <br>
+                <p><strong>Progresso:</strong></p>
+                <mat-progress-bar *ngIf="uploadProgress$ | async" mode="determinate"
+                    [value]="(uploadProgress$ | async)"></mat-progress-bar>
+
             </mat-card-content>
         </mat-card>
 
@@ -30,17 +40,27 @@
         <br>
 
         <h1><strong>ARQUIVOS ARMAZENADOS NO SISTEMA:</strong></h1>
-        <mat-list *ngFor="let pdf of pdfs$ | async">
-            <mat-divider></mat-divider>
-            <span style="color: black;">Descrição Cadastrada: <strong>{{ pdf.description }}</strong></span><br>
-            <span>Data do Registro: {{ pdf.uploadTime | date: 'dd/MM/yyyy : HH:mm' }}</span><br>
-            <span>Tamanho: {{ pdf.size / 1024 / 1024 | number:'1.2' }} MB</span><br>
-            <span>Serviço de Origem: -NSwDpcEIct2_Sg7Jm7C</span>
-            <br>
-            <br>
-            <span>Download do Arquivo:</span>
-            <a [href]="pdf.url" target="_blank" (click)="openPdf(pdf.url)"> ( {{ pdf.name }} )</a>
-            <mat-divider></mat-divider>
-        </mat-list>
+        <mat-card>
+            <mat-card-content>
+                <mat-label class="pesquisa_pdf"><strong>PESQUISAR:</strong></mat-label>
+                <input class="form-control" style="width: 100%;" matInput [(ngModel)]="termo" />
+                
+                <mat-list *ngFor="let pdf of pdfs$ | async | pesquisa: termo">
+                    <mat-divider></mat-divider>
+                    <span style="color: black;">Usuário que fez o upload: <strong>{{ pdf.nomeUsuario
+                            }}</strong></span><br>
+                    <span style="color: black;">Descrição Cadastrada: <strong>{{ pdf.description }}</strong></span><br>
+                    <span>Data do Registro: {{ pdf.uploadTime | date: 'dd/MM/yyyy : HH:mm' }}</span><br>
+                    <span>Tamanho: {{ pdf.size / 1024 / 1024 | number:'1.2' }} MB</span><br>
+                    <span>Serviço de Origem: {{pdf.serviceOrigem}}</span>
+                    <br>
+                    <br>
+                    <span>Download do Arquivo:</span>
+                    <a [href]="pdf.url" target="_blank" (click)="openPdf(pdf.url)"> ( {{ pdf.name }} )</a>
+                    <mat-divider></mat-divider>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+
     </mat-card-content>
 </mat-card>

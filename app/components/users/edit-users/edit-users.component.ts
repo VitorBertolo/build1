@@ -91,6 +91,7 @@ export class EditUsersComponent implements OnInit {
       senha: [""],
       telefone: [""],
       funcao: [""],
+      orders: [[]]
     });
   }
 

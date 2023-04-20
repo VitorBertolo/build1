@@ -18,16 +18,16 @@ export class UsersService {
   constructor(private db: AngularFireDatabase,private afs: AngularFirestore) {
   }
 
-  // Create Users
-  AddUser(user: User) {
-    this.usersRef.push({
-      nome: user.nome,
-      email: user.email,
-      senha: user.senha,
-      telefone: user.telefone,
-      funcao: user.funcao,
-    });
+AddUser(user: User) {
+    const usersRef = this.db.list('users-list');
+    const newUserRef = usersRef.push(user);
+    const newUserId = newUserRef.key;
+
+    // Create subcollection for user
+    const ordersRef = this.db.list(`users-list/${newUserId}/orders`);
+    ordersRef.push({ id: 1, product: 'Product 1'});
   }
+  
 
   // Fetch Single Users Object
   GetUser(id: string) {

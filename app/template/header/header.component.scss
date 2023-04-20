@@ -1,7 +1,7 @@
 .header {
     display: flex;
     align-items: center;
-    background-color: #212529 ;
+    background-color: #212529;
 }
 
 .header a {
@@ -12,9 +12,8 @@
 }
 
 .header .logo {
-    max-height: 50px;
-    margin: 10px 10px 10px 10px;;
-    
+    max-height: 40px;
+    padding: 0 3px 0 3px;
 }
 
 .header .title-group {
@@ -30,7 +29,7 @@ button {
     margin: 3px 3px 3px 3px;
 }
 
-.sair{
+.sair {
     margin: 10px 10px 10px 10px;
 }
 
@@ -38,16 +37,20 @@ button {
     flex: 1 1 auto;
 }
 
-.matMenuItem{
+.matMenuItem {
     display: flex;
     align-items: center;
-    margin: 0px;  
+    margin: 0px;
 }
 
 i {
     margin: 2px 2px;
 }
 
-.mat-menu-item{
-    margin: 0px;   
+.mat-menu-item {
+    margin: 0px;
+}
+
+.menu {
+    font-size: 10px;
 }
